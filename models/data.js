@@ -5,10 +5,10 @@ const customers = (connection, Sequelize) => {
       autoIncrement: true,
       primaryKey: true
     },
-    firstname: { type: Sequelize.STRING },
-    lastname: { type: Sequelize.STRING },
+    firstName: { type: Sequelize.STRING },
+    lastName: { type: Sequelize.STRING },
     email: { type: Sequelize.STRING },
-    phonenumber: { type: Sequelize.INTEGER },
+    phoneNumber: { type: Sequelize.STRING },
   }, { paranoid: true })
 }
 

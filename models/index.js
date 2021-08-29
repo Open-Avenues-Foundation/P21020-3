@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize')
-const customerModel = require('customers')
+const customers = require('./data')
 
-const connection = new Sequelize('customers', 'users', 'a1b2c3', {
+const connection = new Sequelize('customers', 'admin', 'jHkSbJcP_3', {
   host: 'localhost', dialect: 'mysl'
 })
 
-const Customer = customerModel(connection, Sequelize)
+const Customers = customers(connection, Sequelize)
 
-module.exports = { Customer }
+module.exports = { Customers }
