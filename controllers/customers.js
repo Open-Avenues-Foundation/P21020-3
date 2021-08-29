@@ -25,4 +25,4 @@ const createNewCustomer = async (req, res) => {
   return res.status(201).send(newCustomer)
 }
 
-module.exports { getAllCustomers, getCustomerByID, createNewCustomer }
+module.exports = { getAllCustomers, getCustomerByID, createNewCustomer }
