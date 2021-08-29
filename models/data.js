@@ -1,5 +1,5 @@
 const customers = (connection, Sequelize) => {
-    return connection.define('teams', {
+    return connection.define('customers', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       firstName: { type: Sequelize.STRING },
       lastName: { type: Sequelize.STRING },
