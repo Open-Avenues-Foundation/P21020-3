@@ -1,6 +1,7 @@
 const models = require('../models')
 const Customer = require('../models/customer')
 
+
 const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
@@ -11,7 +12,7 @@ const handleUploadCustomers = customers => {
 
     return {
       ...customer,
-      email: validatedEmail,
+      'email': validatedEmail,
     }
   })
 

@@ -1,4 +1,5 @@
 const customerController = require('../controllers/customers')
+const { getAllCustomers } = require('../controllers/customers')
 
 const customerRoutes = app => {
   app.post('/customerUploads', (req, res) => {
@@ -10,11 +11,7 @@ const customerRoutes = app => {
   })
 
 
-  app.get('/customers', (req, res) => {
-    const customers = [{}]
-
-    res.send(`Fetching all the customers ${JSON.stringify(customers)}`)
-  })
+  app.get('/customers', getAllCustomers)
 }
 
 module.exports = customerRoutes
