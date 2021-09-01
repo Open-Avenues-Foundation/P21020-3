@@ -1,12 +1,26 @@
 const models = require('../models')
 
+const handleUploadCustomers = customers => {
+  const customerEmailValidate = customers.map(customer => {
+    const { email } = customer
+    const invalidChar = /^[A-Z0-9+_.-]+@[A-Z0-9.-]+$/
+
+    const validatedEmail = email.replace(invalidChar, '')
+
+    return {
+      ...customer,
+      email: validatedEmail
+    }
+  })
+}
+
 const getAllCustomers = async (req, res) => {
   const customers = await models.Customer.findAll()
 
   return res.send(customers)
 }
 
-const getCustomerByID = async (req, res) => {
+const getCustomerById = async (req, res) => {
   const { Id } = req.params
 
   const foundCustomer = await models.Customer.findOne({ where: { Id } })
@@ -25,5 +39,5 @@ const createNewCustomer = async (req, res) => {
   return res.status(201).send(newCustomer)
 }
 
-module.exports = { getAllCustomers, getCustomerByID, createNewCustomer }
+module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer }
 

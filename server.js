@@ -1,10 +1,12 @@
-const express = require('express');
-const customerRoutes = require('./routes/customer.js');
+/* eslint-disable no-console */
+const express = require('express')
+const customerRoutes = require('./routes/customer.js')
 
-const app = express();
-const port = 7000;
+const app = express()
+const port = 7000
 
-app.use(express.json());
+
+app.use(express.json())
 
 // Set up the routes to upload the customer data.
 // The datastructure of that data is going to be something like
@@ -20,5 +22,5 @@ app.use(express.json());
 customerRoutes(app)
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+  console.log(`Listening on port ${port}`)
+})
