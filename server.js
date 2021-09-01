@@ -1,18 +1,24 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const customerRoutes = require('./routes/customer.js');
 
-app.use(express.json())
+const app = express();
+const port = 7000;
 
-app.get('/', (request, response) => {
-  return response.send('It works!')
-})
+app.use(express.json());
 
+// Set up the routes to upload the customer data.
+// The datastructure of that data is going to be something like
+// Array of customers' objects
+// [
+//    {
+//      first_name: 'first',
+//      last_name: 'last',
+//      phone_number: '1111111111',
+//      ...
+//    }
+// ]
+customerRoutes(app)
 
-app.all('*', (request, response) => {
-  return response.sendStatus(404)
-})
-
-app.listen(1337, () => {
-  console.log('Listening on 1337…') // eslint-disable-line no-console
-})
-
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});

@@ -26,3 +26,4 @@ const createNewCustomer = async (req, res) => {
 }
 
 module.exports = { getAllCustomers, getCustomerByID, createNewCustomer }
+

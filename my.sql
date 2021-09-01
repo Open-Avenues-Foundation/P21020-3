@@ -1,9 +1,16 @@
-DROP DATABASE IF EXISTS customers;
-CREATE DATABASE customers;
+CREATE DATABASE users;
 
-DROP USER IF EXISTS 'users'@'localhost';
-CREATE USER 'users'@'localhost' IDENTIFIED BY '$cary!';
+DROP USER IF exists 'admin'@'localhost';
+CREATE USER 'admin'@'localhost' identified BY 'jHkSbJcP_3';
 
--- Grant our user access to all tables to the database
-GRANT ALL PRIVILEGES ON customers.* to 'users'@'localhost';
+GRANT ALL PRIVILEGES ON users.* to 'admin'@'localhost';
 FLUSH PRIVILEGES;
+
+CREATE TABLE customers (
+ID INT auto_increment,
+firstName varchar(255),
+lastName varchar(255),
+email varchar(255),
+phoneNumber varchar(12),
+PRIMARY KEY (ID)
+);
