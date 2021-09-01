@@ -1,10 +1,10 @@
-const handleUploadCustomers = require('../controllers/customers.js')
+const customerController = require('../controllers/customers')
 
 const customerRoutes = app => {
   app.post('/customerUploads', (req, res) => {
     const { customers } = req.body
 
-    handleUploadCustomers(customers)
+    customerController.handleUploadCustomers(customers)
 
     res.send('Customers uploaded')
   })

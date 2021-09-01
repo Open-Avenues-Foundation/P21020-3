@@ -1,5 +1,4 @@
 const Customer = (connection, Sequelize) => {
-  // Add rest of the fields to the customer model.
   return connection.define('customers', {
     id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
     firstName: { type: Sequelize.STRING },
@@ -8,7 +7,8 @@ const Customer = (connection, Sequelize) => {
     phoneNumber: { type: Sequelize.STRING },
     city: { type: Sequelize.STRING },
     state: { type: Sequelize.STRING },
-    lastOrderPrice: { type: Sequelize.DECIMAL }
+    lastOrderPrice: { type: Sequelize.DECIMAL },
+    lastOrderDate: { type: Sequelize.DATE }
   })
 }
 

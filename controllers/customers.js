@@ -1,17 +1,21 @@
 const models = require('../models')
+const Customer = require('../models/customer')
 
 const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
-    const invalidChar = /^[A-Z0-9+_.-]+@[A-Z0-9.-]+$/
+    // removes whitespaces and commas
+    const invalidChars = /[,\s]+|[,\s]+/g
 
-    const validatedEmail = email.replace(invalidChar, '')
+    const validatedEmail = email.replace(invalidChars, '')
 
     return {
       ...customer,
-      email: validatedEmail
+      email: validatedEmail,
     }
   })
+
+  Customer.BulkCreate(customerEmailValidate)
 }
 
 const getAllCustomers = async (req, res) => {
