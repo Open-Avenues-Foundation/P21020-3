@@ -44,5 +44,14 @@ const createNewCustomer = async (req, res) => {
   return res.status(201).send(newCustomer)
 }
 
-module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer }
+const customerRoutes = async (req, res) => {
+  const { customers } = req.body
+
+  customerController.handleUploadCustomers(customers)
+
+  res.send('Customers uploaded')
+}
+
+
+module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes }
 

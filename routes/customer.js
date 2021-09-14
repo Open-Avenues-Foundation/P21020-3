@@ -1,8 +1,7 @@
 const customerController = require('../controllers/customers')
-const { getAllCustomers } = require('../controllers/customers')
+const { getAllCustomers, customerRoutes } = require('../controllers/customers')
 
-const customerRoutes = app => {
-  app.post('/customerUploads', (req, res) => {
+app.post('/customerUploads', (req, res) => {
     const { customers } = req.body
 
     customerController.handleUploadCustomers(customers)
@@ -12,6 +11,5 @@ const customerRoutes = app => {
 
 
   app.get('/customers', getAllCustomers)
-}
 
 module.exports = customerRoutes
