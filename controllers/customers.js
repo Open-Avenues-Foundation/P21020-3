@@ -1,5 +1,6 @@
 const models = require('../models')
 const Customer = require('../models/customer')
+const customerController = require('./customers')
 
 
 const handleUploadCustomers = customers => {
