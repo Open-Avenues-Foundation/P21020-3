@@ -6,13 +6,13 @@ const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
     // removes whitespaces and commas
-    const invalidChars = /[,\s]+|[,\s]+/g
+    const invalidChars = /[,]+|[.]{2,}|\s
 
     const validatedEmail = email.replace(invalidChars, '')
 
     return {
       ...customer,
-      'email': validatedEmail,
+      email: validatedEmail,
     }
   })
 
