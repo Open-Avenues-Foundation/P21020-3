@@ -2,41 +2,46 @@ CREATE DATABASE users;
 
 DROP USER IF exists 'admin'@'localhost';
 CREATE USER 'admin'@'localhost' identified BY 'jHkSbJcP_3';
-
+// we should add env config setup
 GRANT ALL PRIVILEGES ON users.* to 'admin'@'localhost';
 FLUSH PRIVILEGES;
 
 CREATE TABLE customers (
-ID INT auto_increment,
+Id INT auto_increment,
 firstName varchar(255),
 lastName varchar(255),
 email varchar(255),
 phoneNumber varchar(10),
-PRIMARY KEY (ID)
+state varchar(2),
+city varchar(50),
+PRIMARY KEY (Id)
 );
 
 CREATE TABLE textMessages (
-  ID INT AUTO_INCREMENT,
+  Id INT AUTO_INCREMENT,
   subject varchar(255),
   messageBody VARCHAR(255),
   createDate DATETIME,
   expiryDate DATETIME,
   nextRemindDate DATETIME,
-  FOREIGN KEY(customerID) REFERENCES customers(ID),
-  PRIMARY KEY (ID)
+  isRead ENUM('Y', 'N'),
+  FOREIGN KEY(customerId) REFERENCES customers(Id),
+  PRIMARY KEY (Id)
 );
 
 CREATE TABLE groups (
-  ID INT AUTO_INCREMENT,
+  Id INT AUTO_INCREMENT,
   groupName VARCHAR(255),
   createDate DATETIME,
-  isActive CHAR(1)
+  isActive ENUM('Y', 'N'),
+  lastOrderDate DATETIME,
+  lastOrderPrice INT,
+  PRIMARY KEY(Id)
 );
 
 CREATE TABLE customerGroups (
-  FOREIGN KEY(customerID) REFERENCES customers(ID),
-  FOREIGN KEY(groupID) REFERENCES groups(ID),
-  PRIMARY KEY(customerID),
-  PRIMARY KEY(groupID)
+  FOREIGN KEY(customerId) REFERENCES customers(Id),
+  FOREIGN KEY(groupId) REFERENCES groups(Idd),
+  PRIMARY KEY(customerId, groupId)
 );
 
