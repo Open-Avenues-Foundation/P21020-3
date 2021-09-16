@@ -47,17 +47,6 @@ const createNewCustomer = async (req, res) => {
 
 const customerRoutes = async (req, res) => {
   const { customers } = req.body
-<<<<<<< HEAD
-
-  customerController.handleUploadCustomers(customers)
-
-  res.send('Customers uploaded')
-}
-
-
-module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes }
-=======
->>>>>>> 72f93ba01bf86f2175a7407a9e38ee0e6ffb37cc
 
   customerController.handleUploadCustomers(customers)
 
