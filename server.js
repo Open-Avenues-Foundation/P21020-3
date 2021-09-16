@@ -1,16 +1,15 @@
+/* eslint-disable no-console */
 const express = require('express')
+const customerRoutes = require('./routes/customer.js')
 
 const app = express()
+const port = 7000
 
-app.get('/', (request, response) => {
-  return response.send('It works!')
+
+app.use(express.json())
+
+customerRoutes(app)
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
 })
-
-app.all('*', (request, response) => {
-  return response.sendStatus(404)
-})
-
-app.listen(1337, () => {
-  console.log('Listening on 1337…') // eslint-disable-line no-console
-})
-
