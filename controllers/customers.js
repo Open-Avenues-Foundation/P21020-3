@@ -7,13 +7,13 @@ const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
     // removes whitespaces and commas
-    const invalidChars = /[,\s]+|[,\s]+/g
+    const invalidChars = /[,]+|[.]{2,}|\s
 
     const validatedEmail = email.replace(invalidChars, '')
 
     return {
       ...customer,
-      'email': validatedEmail,
+      email: validatedEmail,
     }
   })
 
@@ -47,6 +47,7 @@ const createNewCustomer = async (req, res) => {
 
 const customerRoutes = async (req, res) => {
   const { customers } = req.body
+<<<<<<< HEAD
 
   customerController.handleUploadCustomers(customers)
 
@@ -55,4 +56,12 @@ const customerRoutes = async (req, res) => {
 
 
 module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes }
+=======
+>>>>>>> 72f93ba01bf86f2175a7407a9e38ee0e6ffb37cc
 
+  customerController.handleUploadCustomers(customers)
+
+  res.send('Customers uploaded')
+}
+
+module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes }
