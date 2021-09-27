@@ -26,7 +26,7 @@ const getAllCustomers = async (req, res) => {
   return res.send(customers)
 }
 
-const getCustomerByIdWithTextMessage = async (req, res) => {
+const getCustomerById = async (req, res) => {
   const { Id } = req.params
 
   const foundCustomer = await models.Customer.findOne({ where: { Id }, })
@@ -56,5 +56,5 @@ const customerRoutes = async (req, res) => {
 }
 
 module.exports = {
-  handleUploadCustomers, getAllCustomers, getCustomerByIdWithTextMessage, createNewCustomer, customerRoutes
+  handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes
 }
