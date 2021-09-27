@@ -4,7 +4,7 @@ const textmessages = require('./textmessages')
 const groups = require('./groups')
 const customergroups = require('./customerGroups')
 
-const connection = new Sequelize('customers', 'admin', 'jHkSbJcP_3', {
+const connection = new Sequelize('users', 'admin', 'jHkSbJcP_3', {
   host: 'localhost', dialect: 'mysql'
 })
 

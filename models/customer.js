@@ -7,9 +7,8 @@ const Customer = (connection, Sequelize) => {
     phoneNumber: { type: Sequelize.STRING },
     city: { type: Sequelize.STRING },
     state: { type: Sequelize.STRING },
-    lastOrderPrice: { type: Sequelize.DECIMAL },
-    lastOrderDate: { type: Sequelize.DATE }
-  })
+  },
+  { paranoid: true })
 }
 
 module.exports = Customer

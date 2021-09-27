@@ -6,8 +6,11 @@ const Group = (connection, Sequelize) => {
       primaryKey: true
     },
     // createDate: { type: Sequelize.DATE }
-    name: { type: Sequelize.STRING },
-    isActive: { type: Sequelize.ENUM('Y', 'N') }
+    groupName: { type: Sequelize.STRING },
+    isActive: { type: Sequelize.ENUM('Y', 'N') },
+    lastOrderDate: { type: Sequelize.DATE },
+    lastOrderPrice: { type: Sequelize.DECIMAL },
+
   })
 }
 

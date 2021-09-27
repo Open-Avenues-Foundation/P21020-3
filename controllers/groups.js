@@ -2,7 +2,7 @@ const models = require('../models')
 // const Groups = require('../models/groups')
 
 const getAllGroups = async (req, res) => {
-  const groups = await models.Groups.findAll()
+  const groups = await models.Group.findAll()
 
   return res.send(groups)
 }
@@ -10,7 +10,7 @@ const getAllGroups = async (req, res) => {
 const getGroupById = async (req, res) => {
   const { id } = req.params
 
-  const foundGroup = await models.Groups.findOne({
+  const foundGroup = await models.Group.findOne({
     where: { id },
   })
 

@@ -16,6 +16,9 @@ email VARCHAR(255),
 phoneNumber VARCHAR(10),
 state VARCHAR(2),
 city VARCHAR(50),
+updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+createdAt DATETIME DEFAULT NOW(),
+deletedAt DATETIME,
 PRIMARY KEY (id)
 );
 
@@ -27,7 +30,11 @@ CREATE TABLE textMessages (
   createDate DATETIME,
   expiryDate DATETIME,
   nextRemindDate DATETIME,
+  reminderFrequencyID INT,
   isRead ENUM('Y', 'N'),
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  createdAt DATETIME DEFAULT NOW(),
+  deletedAt DATETIME,
   FOREIGN KEY(customerId) REFERENCES customers(Id),
   PRIMARY KEY (id)
 );
@@ -39,6 +46,9 @@ CREATE TABLE textGroups (
   isActive ENUM('Y', 'N'),
   lastOrderDate DATETIME,
   lastOrderPrice INT,
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  createdAt DATETIME DEFAULT NOW(),
+  deletedAt DATETIME,
   PRIMARY KEY(id)
 );
 
@@ -46,6 +56,9 @@ CREATE TABLE textGroups (
 CREATE TABLE customerGroups (
   customerId INT,
   textGroupId INT,
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  createdAt DATETIME DEFAULT NOW(),
+  deletedAt DATETIME,
   FOREIGN KEY(customerId) REFERENCES customers(Id),
   FOREIGN KEY(textGroupId) REFERENCES textGroups(Id),
   PRIMARY KEY(customerId, textGroupId)

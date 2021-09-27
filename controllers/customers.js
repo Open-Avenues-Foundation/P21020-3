@@ -27,9 +27,9 @@ const getAllCustomers = async (req, res) => {
 }
 
 const getCustomerById = async (req, res) => {
-  const { Id } = req.params
+  const { id } = req.params
 
-  const foundCustomer = await models.Customer.findOne({ where: { Id }, })
+  const foundCustomer = await models.Customer.findOne({ where: { id }, })
 
   return foundCustomer
     ? res.send(foundCustomer)
@@ -47,7 +47,7 @@ const createNewCustomer = async (req, res) => {
   return res.status(201).send(newCustomer)
 }
 
-const customerRoutes = async (req, res) => {
+const customerRoute = async (req, res) => {
   const { customers } = req.body
 
   customerController.handleUploadCustomers(customers)
@@ -56,5 +56,5 @@ const customerRoutes = async (req, res) => {
 }
 
 module.exports = {
-  handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes
+  handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoute
 }
