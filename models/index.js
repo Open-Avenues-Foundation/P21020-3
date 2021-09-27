@@ -13,4 +13,10 @@ const TextMessage = textmessages(connection, Sequelize)
 const Group = groups(connection, Sequelize)
 const CustomerGroup = customergroups(connection, Sequelize)
 
+Customer.hasMany(TextMessage)
+TextMessage.belongsTo(Customer)
+
+Customer.belongsToMany(Group, { through: CustomerGroup })
+Group.belongsToMany(Customer, { through: CustomerGroup })
+
 module.exports = { Customer, TextMessage, Group, CustomerGroup }

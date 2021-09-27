@@ -7,7 +7,7 @@ const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
     // removes whitespaces and commas
-    const invalidChars = /[,]+|[.]{2,}|\s
+    const invalidChars = /[,]+|[.]{2,}|\s/g
 
     const validatedEmail = email.replace(invalidChars, '')
 
@@ -26,12 +26,14 @@ const getAllCustomers = async (req, res) => {
   return res.send(customers)
 }
 
-const getCustomerById = async (req, res) => {
+const getCustomerByIdWithTextMessage = async (req, res) => {
   const { Id } = req.params
 
-  const foundCustomer = await models.Customer.findOne({ where: { Id } })
+  const foundCustomer = await models.Customer.findOne({ where: { Id }, })
 
-  return res.send(foundCustomer)
+  return foundCustomer
+    ? res.send(foundCustomer)
+    : res.sendStatus(404)
 }
 
 const createNewCustomer = async (req, res) => {
@@ -53,4 +55,6 @@ const customerRoutes = async (req, res) => {
   res.send('Customers uploaded')
 }
 
-module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes }
+module.exports = {
+  handleUploadCustomers, getAllCustomers, getCustomerByIdWithTextMessage, createNewCustomer, customerRoutes
+}
