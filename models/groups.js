@@ -5,7 +5,7 @@ const Group = (connection, Sequelize) => {
       autoIncrement: true,
       primaryKey: true
     },
-    // createDate: { type: Sequelize.DATE }
+    createDate: { type: Sequelize.DATE },
     groupName: { type: Sequelize.STRING },
     isActive: { type: Sequelize.ENUM('Y', 'N') },
     lastOrderDate: { type: Sequelize.DATE },

@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+   "scripts": {
+    "dev": "./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon index.js",
+    "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
+    "lint": "eslint --format codeframe .",
+    "lint:fix": "eslint --fix --format codeframe ."
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Open-Avenues-Foundation/P21020-3.git"
@@ -19,6 +22,7 @@
   "homepage": "https://github.com/Open-Avenues-Foundation/P21020-3#readme",
   "devDependencies": {
     "chai": "^4.3.4",
+    "env-cmd": "^10.1.0",
     "eslint": "^7.32.0",
     "mocha": "^9.0.3"
   },
@@ -27,6 +31,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.12",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
   }
 }

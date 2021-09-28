@@ -6,7 +6,6 @@ const customerController = require('./customers')
 const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
-    // removes whitespaces and commas
     const invalidChars = /[,]+|[.]{2,}|\s/g
 
     const validatedEmail = email.replace(invalidChars, '')
