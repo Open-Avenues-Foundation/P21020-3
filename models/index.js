@@ -1,11 +1,19 @@
 const Sequelize = require('sequelize')
+const allConfigs = require('../config/sequelize')
 const customers = require('./customer')
 const textmessages = require('./textmessages')
 const groups = require('./groups')
 const customergroups = require('./customerGroups')
 
-const connection = new Sequelize('users', 'admin', 'jHkSbJcP_3', {
-  host: 'localhost', dialect: 'mysql'
+// const connection = new Sequelize('users', 'admin', 'jHkSbJcP_3', {
+//   host: 'localhost', dialect: 'mysql'
+const environment = process.env.NODE_ENV || 'development'
+const config = allConfigs[environment]
+
+
+const connection = new Sequelize(config.database, config.username, config.password, {
+  host: config.host, dialect: config.dialect
+
 })
 
 const Customer = customers(connection, Sequelize)
