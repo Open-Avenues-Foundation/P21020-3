@@ -1,5 +1,5 @@
 const models = require('../models')
-// const TextMessage = require('../models/textmessages')
+
 
 const getAllMessages = async (req, res) => {
   const messages = await models.TextMessage.findAll()

@@ -1,5 +1,5 @@
 const models = require('../models')
-// const Groups = require('../models/groups')
+
 
 const getAllGroups = async (req, res) => {
   const groups = await models.Group.findAll()
