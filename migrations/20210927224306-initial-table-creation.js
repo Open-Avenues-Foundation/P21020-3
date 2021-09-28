@@ -14,12 +14,12 @@ module.exports = {
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP') },
       deletedAt: { type: Sequelize.DATE }
-
     })
+
     await
-    queryInterface.createTable('textMessages', {
+    queryInterface.createTable('textmessages', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      customerId: { type: Sequelize.INTEGER, references: { model: 'customer', key: 'id' } },
+      customerId: { type: Sequelize.INTEGER, references: { model: 'customers', key: 'id' } },
       subject: { type: Sequelize.STRING },
       messageBody: { type: Sequelize.STRING },
       createDate: { type: Sequelize.DATE },
@@ -48,12 +48,12 @@ module.exports = {
       customerId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        references: { model: 'customer', key: 'id' }
+        references: { model: 'customers', key: 'id' }
       },
       textGroupId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        references: { model: 'group', key: 'id' }
+        references: { model: 'textGroups', key: 'id' }
       },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP') },
