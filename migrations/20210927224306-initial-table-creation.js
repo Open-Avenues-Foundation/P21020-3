@@ -25,7 +25,7 @@ module.exports = {
       createDate: { type: Sequelize.DATE },
       expiryDate: { type: Sequelize.DATE },
       nextRemindDate: { type: Sequelize.DATE },
-      reminderFrequencyID: { type: Sequelize.INTEGER },
+      reminderFrequencyId: { type: Sequelize.INTEGER },
       isRead: { type: Sequelize.ENUM('Y', 'N') },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP') },
