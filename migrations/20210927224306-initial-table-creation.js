@@ -44,7 +44,7 @@ module.exports = {
       deletedAt: { type: Sequelize.DATE }
     })
 
-    return queryInterface.createTable('customerGroups', {
+    await queryInterface.createTable('customerGroups', {
       customerId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -59,9 +59,26 @@ module.exports = {
       updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP') },
       deletedAt: { type: Sequelize.DATE }
     })
+
+    return queryInterface.createTable('customerTextmessages', {
+      customerId: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        references: { model: 'customers', key: 'id' }
+      },
+      textMessageId: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        references: { model: 'textmessages', key: 'id' }
+      },
+      createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
+      updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP') },
+      deletedAt: { type: Sequelize.DATE }
+    })
   },
 
   down: async (queryInterface) => {
+    await queryInterface.dropTable('customerTextmessages')
     await queryInterface.dropTable('customerGroups')
     await queryInterface.dropTable('textGroups')
     await queryInterface.dropTable('textMessages')

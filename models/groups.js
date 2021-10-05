@@ -11,7 +11,8 @@ const Group = (connection, Sequelize) => {
     lastOrderDate: { type: Sequelize.DATE },
     lastOrderPrice: { type: Sequelize.DECIMAL },
 
-  })
+  },
+  { paranoid: true })
 }
 
 module.exports = Group

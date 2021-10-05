@@ -4,6 +4,7 @@ const customers = require('./customer')
 const textmessages = require('./textmessages')
 const groups = require('./groups')
 const customergroups = require('./customerGroups')
+const customertextmessages = require('./customerTextmessages')
 
 const environment = process.env.NODE_ENV || 'development'
 const config = allConfigs[environment]
@@ -18,11 +19,16 @@ const Customer = customers(connection, Sequelize)
 const TextMessage = textmessages(connection, Sequelize)
 const Group = groups(connection, Sequelize)
 const CustomerGroup = customergroups(connection, Sequelize)
+const CustomerTextMessage = customertextmessages(connection, Sequelize)
 
-Customer.hasMany(TextMessage)
-TextMessage.belongsTo(Customer)
 
 Customer.belongsToMany(Group, { through: CustomerGroup })
 Group.belongsToMany(Customer, { through: CustomerGroup })
 
-module.exports = { Customer, TextMessage, Group, CustomerGroup }
+Group.belongsToMany(TextMessage, { through: CustomerTextMessage })
+TextMessage.belongsToMany(Group, { through: CustomerTextMessage })
+
+
+module.exports = {
+  Customer, TextMessage, Group, CustomerGroup, CustomerTextMessage
+}

@@ -36,12 +36,16 @@ const getCustomerById = async (req, res) => {
 }
 
 const createNewCustomer = async (req, res) => {
-  const { firstName, lastName, email, phoneNumber } = res.body
+  const {
+    firstName, lastName, email, phoneNumber, city, state
+  } = req.body
 
   // eslint-disable-next-line max-len
-  if (!firstName || !lastName || email || phoneNumber) return res.status(400).send('The following fields are required: firstname, lastname, email, phonenumber')
+  if (!firstName || !lastName || email || phoneNumber) return res.status(400).send('The following fields are required: firstname, lastname, email, phonenumber, city, state')
 
-  const newCustomer = await models.Customer.create({ firstName, lastName, email, phoneNumber })
+  const newCustomer = await models.Customer.create({
+    firstName, lastName, email, phoneNumber, city, state
+  })
 
   return res.status(201).send(newCustomer)
 }

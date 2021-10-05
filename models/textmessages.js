@@ -6,8 +6,9 @@ const TextMessage = (connection, Sequelize) => {
     expiryDate: { type: Sequelize.DATE },
     nextRemindDate: { type: Sequelize.STRING },
     reminderFrequencyID: { type: Sequelize.INTEGER },
-    isRead: { type: Sequelize.ENUM('Y', 'N') }
-  })
+    messageStatus: { type: Sequelize.ENUM('Delivered', 'Failed') }
+  },
+  { paranoid: true })
 }
 
 module.exports = TextMessage
