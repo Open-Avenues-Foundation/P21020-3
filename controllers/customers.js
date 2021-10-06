@@ -6,6 +6,7 @@ const customerController = require('./customers')
 const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
+
     const invalidChars = /[,]+|[.]{2,}|\s/g
 
     const validatedEmail = email.replace(invalidChars, '')
@@ -58,6 +59,8 @@ const customerRoute = async (req, res) => {
   res.send('Customers uploaded')
 }
 
+
 module.exports = {
   handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoute
 }
+
