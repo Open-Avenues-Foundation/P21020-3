@@ -1,6 +1,8 @@
 import React from 'react'
+import Table from 'react-bootstrap/Table'
 
 
+const CustomerTable = () => {
 <Table striped bordered hover>
   <thead>
     <tr>
@@ -22,3 +24,6 @@ import React from 'react'
     </tr>
   </tbody>
 </Table>
+}
+
+export default CustomerTable
