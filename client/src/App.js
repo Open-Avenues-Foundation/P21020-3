@@ -1,12 +1,13 @@
-import './App.css';
+
+import React from 'react'
 import NewCustomer from './components/InputNewCustomer'
-import CustomerTable from './components/customertable/customerTable'
+
+
 
 function App() {
   return (
     <div className="App">
       <NewCustomer />
-      <CustomerTable />
       
     </div>
   );
