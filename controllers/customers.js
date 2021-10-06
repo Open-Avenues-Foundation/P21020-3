@@ -6,7 +6,7 @@ const customerController = require('./customers')
 const handleUploadCustomers = customers => {
   const customerEmailValidate = customers.map(customer => {
     const { email } = customer
-    // removes whitespaces and commas
+
     const invalidChars = /[,]+|[.]{2,}|\s/g
 
     const validatedEmail = email.replace(invalidChars, '')
@@ -27,25 +27,31 @@ const getAllCustomers = async (req, res) => {
 }
 
 const getCustomerById = async (req, res) => {
-  const { Id } = req.params
+  const { id } = req.params
 
-  const foundCustomer = await models.Customer.findOne({ where: { Id } })
+  const foundCustomer = await models.Customer.findOne({ where: { id }, })
 
-  return res.send(foundCustomer)
+  return foundCustomer
+    ? res.send(foundCustomer)
+    : res.sendStatus(404)
 }
 
 const createNewCustomer = async (req, res) => {
-  const { firstName, lastName, email, phoneNumber } = res.body
+  const {
+    firstName, lastName, email, phoneNumber, city, state
+  } = req.body
 
   // eslint-disable-next-line max-len
-  if (!firstName || !lastName || email || phoneNumber) return res.status(400).send('The following fields are required: firstname, lastname, email, phonenumber')
+  if (!firstName || !lastName || email || phoneNumber) return res.status(400).send('The following fields are required: firstname, lastname, email, phonenumber, city, state')
 
-  const newCustomer = await models.Customer.create({ firstName, lastName, email, phoneNumber })
+  const newCustomer = await models.Customer.create({
+    firstName, lastName, email, phoneNumber, city, state
+  })
 
   return res.status(201).send(newCustomer)
 }
 
-const customerRoutes = async (req, res) => {
+const customerRoute = async (req, res) => {
   const { customers } = req.body
 
   customerController.handleUploadCustomers(customers)
@@ -53,4 +59,8 @@ const customerRoutes = async (req, res) => {
   res.send('Customers uploaded')
 }
 
-module.exports = { handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoutes }
+
+module.exports = {
+  handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoute
+}
+

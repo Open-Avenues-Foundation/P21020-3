@@ -1,16 +1,17 @@
-const customerGroup = (connection, Sequelize, Customers, Groups) => {
+const customerGroup = (connection, Sequelize, Customer, Group) => {
   return connection.define('customergroups', {
     customerId: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        references: { model: Customers, key: 'id' } },
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      references: { model: Customer, key: 'id' }
+    },
     groupId: {
       type: Sequelize.INTEGER,
-        primaryKey: true,
-        references: { model: Groups, key: 'id' }
-      },
+      primaryKey: true,
+      references: { model: Group, key: 'id' }
+    },
   },
-  { paranoid: true} )
+  { paranoid: true })
 }
 
 module.exports = customerGroup
