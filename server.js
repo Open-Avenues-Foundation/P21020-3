@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express')
-const customerRoutes = require('./routes/customer.js')
+const customerRoutes = require('./routes/customer')
 const groupRoutes = require('./routes/groups')
 const textmessageRoutes = require('./routes/textmessages')
 

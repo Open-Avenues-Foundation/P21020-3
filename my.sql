@@ -1,47 +1,66 @@
+DROP DATABASE IF EXISTS users;
 CREATE DATABASE users;
 
 DROP USER IF exists 'admin'@'localhost';
 CREATE USER 'admin'@'localhost' identified BY 'jHkSbJcP_3';
-// we should add env config setup
 GRANT ALL PRIVILEGES ON users.* to 'admin'@'localhost';
 FLUSH PRIVILEGES;
 
+USE users;
+
 CREATE TABLE customers (
-Id INT auto_increment,
-firstName varchar(255),
-lastName varchar(255),
-email varchar(255),
-phoneNumber varchar(10),
-state varchar(2),
-city varchar(50),
-PRIMARY KEY (Id)
+id INT AUTO_INCREMENT,
+firstName VARCHAR(255),
+lastName VARCHAR(255),
+email VARCHAR(255),
+phoneNumber VARCHAR(10),
+state VARCHAR(2),
+city VARCHAR(50),
+updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+createdAt DATETIME DEFAULT NOW(),
+deletedAt DATETIME,
+PRIMARY KEY (id)
 );
 
 CREATE TABLE textMessages (
-  Id INT AUTO_INCREMENT,
-  subject varchar(255),
+  id INT AUTO_INCREMENT,
+  customerid INT, 
+  subject VARCHAR(255),
   messageBody VARCHAR(255),
   createDate DATETIME,
   expiryDate DATETIME,
   nextRemindDate DATETIME,
+  reminderFrequencyID INT,
   isRead ENUM('Y', 'N'),
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  createdAt DATETIME DEFAULT NOW(),
+  deletedAt DATETIME,
   FOREIGN KEY(customerId) REFERENCES customers(Id),
-  PRIMARY KEY (Id)
+  PRIMARY KEY (id)
 );
 
-CREATE TABLE groups (
-  Id INT AUTO_INCREMENT,
-  groupName VARCHAR(255),
+CREATE TABLE textGroups (
+  id INT AUTO_INCREMENT,
+  groupName  VARCHAR(255),
   createDate DATETIME,
   isActive ENUM('Y', 'N'),
   lastOrderDate DATETIME,
   lastOrderPrice INT,
-  PRIMARY KEY(Id)
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  createdAt DATETIME DEFAULT NOW(),
+  deletedAt DATETIME,
+  PRIMARY KEY(id)
 );
 
+
 CREATE TABLE customerGroups (
+  customerId INT,
+  textGroupId INT,
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  createdAt DATETIME DEFAULT NOW(),
+  deletedAt DATETIME,
   FOREIGN KEY(customerId) REFERENCES customers(Id),
-  FOREIGN KEY(groupId) REFERENCES groups(Idd),
-  PRIMARY KEY(customerId, groupId)
+  FOREIGN KEY(textGroupId) REFERENCES textGroups(Id),
+  PRIMARY KEY(customerId, textGroupId)
 );
 
