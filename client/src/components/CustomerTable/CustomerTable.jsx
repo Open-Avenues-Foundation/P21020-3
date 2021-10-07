@@ -1,7 +1,42 @@
 import React from "react"
-import { Table } from 'react-bootstrap'
+import { Spinner, Table } from 'react-bootstrap'
 
-const CustomerTable = () => {
+const CustomerTable = props => {
+  const {customers, isLoading} = props
+
+  const displayCustomers = () => {
+    if (isLoading) {
+      return (
+        <tr>
+          <td colspan="8">
+            <Spinner animation="border" variant="info" />
+          </td>
+        </tr>
+      )
+    }
+    if (customers.length === 0) {
+    return (
+      <tr>
+        <td colspan="8">
+          There is nothing to display, please add some customers
+        </td>
+      </tr>
+    )
+  } else {
+      return customers.map((customer, index) => (
+        <tr>
+          <td>{customer.id}</td>
+          <td>{customer.firstName}</td>
+          <td>{customer.lastName}</td>
+          <td>{customer.email}</td>
+          <td>{customer.phoneNumber}</td>
+          <td>{customer.city}</td>
+          <td>{customer.state}</td>
+          <td>Delete</td>
+        </tr>
+      ))
+  }
+}
   return (
     <Table striped bordered hover>
       <thead>
@@ -17,26 +52,7 @@ const CustomerTable = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>motta@gmail.com</td>
-          <td>(508) 476-3211</td>
-          <td>Boston</td>
-          <td>MA</td>
-          <td>edit/delete</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Fox</td>
-          <td>Mulder</td>
-          <td>fmulder@gmail.com</td>
-          <td>(508) 476-3211</td>
-          <td>Boston</td>
-          <td>MA</td>
-          <td>edit/delete</td>
-        </tr>
+        {displayCustomers()}
       </tbody>
     </Table>
       )
