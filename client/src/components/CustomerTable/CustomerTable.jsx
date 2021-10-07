@@ -23,7 +23,7 @@ const CustomerTable = props => {
       </tr>
     )
   } else {
-      return customers.map((customer, index) => (
+      return customers.map((customer, index) => {
         <tr>
           <td>{customer.id}</td>
           <td>{customer.firstName}</td>
@@ -34,7 +34,7 @@ const CustomerTable = props => {
           <td>{customer.state}</td>
           <td>Delete</td>
         </tr>
-      ))
+      })
   }
 }
   return (
