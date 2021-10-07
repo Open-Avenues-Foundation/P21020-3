@@ -35,16 +35,15 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "bootstrap": "^5.1.1",
+    "bootstrap": "^5.1.2",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
-    "react-bootstrap": "^2.0.0-rc.0",
+    "react-bootstrap": "^1.6.4",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
     "twilio": "^3.68.0"
-
   }
 }
