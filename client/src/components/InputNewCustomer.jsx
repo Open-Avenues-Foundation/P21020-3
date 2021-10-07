@@ -1,5 +1,6 @@
 import React from "react"
-
+import {Table} from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 const NewCustomer = () => {
     return (
@@ -17,7 +18,7 @@ const NewCustomer = () => {
                     <input type="text" name="city" id="city" required />  
                 <label htmlFor="state">State:</label>
                     <input type="text" name="state" id="state" required />
-                <button className="addcustomer">Create New Customer</button>
+                <button variant="primary" size="lg" className="addcustomer">Create New Customer</button>
             </form>
         </div>
     )  
