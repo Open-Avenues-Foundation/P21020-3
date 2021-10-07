@@ -1,5 +1,8 @@
-import './App.css';
+
+import React from 'react'
 import NewCustomer from './components/InputNewCustomer'
+
+
 
 function App() {
   return (
