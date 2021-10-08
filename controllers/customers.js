@@ -1,6 +1,5 @@
 const models = require('../models')
-const Customer = require('../models/customer')
-const customerController = require('./customers')
+
 
 const sanitizeEmail = (email) => {
   const invalidChars = /[,]+|[.]{2,}|\s/g
@@ -52,7 +51,7 @@ const createNewCustomer = async (req, res) => {
   // eslint-disable-next-line max-len
   if (!firstName || !lastName || email || phoneNumber) return res.status(400).send('The following fields are required: firstname, lastname, email, phonenumber, city, state')
 
-   const cleanedEmail = sanitizeEmail(email)
+  const cleanedEmail = sanitizeEmail(email)
 
   const newCustomer = await models.Customer.create({
     firstName,
