@@ -20,10 +20,10 @@ const getMessageById = async (req, res) => {
 const createNewMessage = async (req, res) => {
   const {
     messageBody, messageStatus
-  } = res.body
+  } = req.body
 
   // eslint-disable-next-line max-len
-  if (!messageBody || !messageStatus) return res.status(400).send('The following fields are required: message body, messageStatus')
+  if (!messageBody || !messageStatus) return res.status(400).send('The following fields are required: messageBody, messageStatus')
 
   const newMessage = await models.TextMessage.create({
     messageBody, messageStatus
