@@ -7,6 +7,8 @@ const Customer = (connection, Sequelize) => {
     phoneNumber: { type: Sequelize.STRING },
     city: { type: Sequelize.STRING },
     state: { type: Sequelize.STRING },
+    lastOrderDate: { type: Sequelize.DATE },
+    lastOrderPrice: { type: Sequelize.DECIMAL }
   },
   { paranoid: true })
 }
