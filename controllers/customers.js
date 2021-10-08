@@ -1,23 +1,30 @@
 const models = require('../models')
-const Customer = require('../models/customer')
-const customerController = require('./customers')
 
 
-const handleUploadCustomers = customers => {
-  const customerEmailValidate = customers.map(customer => {
+const sanitizeEmail = (email) => {
+  const invalidChars = /[,]+|[.]{2,}|\s/g
+  const validatedEmail = email.replace(invalidChars, '')
+
+  return validatedEmail
+}
+
+const handleUploadCustomers = async (req, res) => {
+  const customers = req.body
+
+  const customerEmailValidate = customers.map((customer) => {
     const { email } = customer
 
-    const invalidChars = /[,]+|[.]{2,}|\s/g
-
-    const validatedEmail = email.replace(invalidChars, '')
+    const cleanedEmail = sanitizeEmail(email)
 
     return {
       ...customer,
-      email: validatedEmail,
+      email: cleanedEmail
     }
   })
 
-  Customer.BulkCreate(customerEmailValidate)
+  await models.Customer.bulkCreate(customerEmailValidate)
+
+  return res.send('Successfully uploaded!')
 }
 
 const getAllCustomers = async (req, res) => {
@@ -38,29 +45,30 @@ const getCustomerById = async (req, res) => {
 
 const createNewCustomer = async (req, res) => {
   const {
-    firstName, lastName, email, phoneNumber, city, state
+    firstName, lastName, email, phoneNumber, city, state, lastOrderDate, lastOrderPrice
   } = req.body
 
   // eslint-disable-next-line max-len
-  if (!firstName || !lastName || email || phoneNumber) return res.status(400).send('The following fields are required: firstname, lastname, email, phonenumber, city, state')
+  if (!firstName || !lastName || !email || !phoneNumber || !city || !state || !lastOrderDate || !lastOrderPrice) return res.status(400).send('The following fields are required: firstname, lastname, email, phonenumber, city, state, lastOrderDate, lastOrderPrice')
+
+  const cleanedEmail = sanitizeEmail(email)
 
   const newCustomer = await models.Customer.create({
-    firstName, lastName, email, phoneNumber, city, state
+    firstName,
+    lastName,
+    email: cleanedEmail,
+    phoneNumber,
+    city,
+    state,
+    lastOrderDate,
+    lastOrderPrice
   })
 
   return res.status(201).send(newCustomer)
 }
 
-const customerRoute = async (req, res) => {
-  const { customers } = req.body
-
-  customerController.handleUploadCustomers(customers)
-
-  res.send('Customers uploaded')
-}
-
 
 module.exports = {
-  handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer, customerRoute
+  handleUploadCustomers, getAllCustomers, getCustomerById, createNewCustomer
 }
 

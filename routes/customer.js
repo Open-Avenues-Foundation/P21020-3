@@ -1,10 +1,10 @@
 
 // eslint-disable-next-line max-len
-const { getAllCustomers, customerRoute, createNewCustomer, getCustomerById } = require('../controllers/customers')
+const { getAllCustomers, handleUploadCustomers, createNewCustomer, getCustomerById } = require('../controllers/customers')
 
 
 const customerRoutes = (app) => {
-  app.post('/customerUploads', customerRoute)
+  app.post('/customerUploads', handleUploadCustomers)
   app.post('/newCustomer', createNewCustomer)
 
   app.get('/customers', getAllCustomers)
