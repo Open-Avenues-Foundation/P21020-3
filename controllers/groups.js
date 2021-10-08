@@ -20,11 +20,16 @@ const getGroupById = async (req, res) => {
 }
 
 const createNewGroup = async (req, res) => {
-  const { name } = res.body
+  const {
+    createDate, groupName, isActive, lastOrderDate, lastOrderPrice
+  } = req.body
 
-  if (!name) return res.status(400).send('The following fields are required: name')
+  // eslint-disable-next-line max-len
+  if (!createDate || !groupName || !isActive || !lastOrderDate || !lastOrderPrice) return res.status(400).send('The following fields are required: createDate, groupName, isActive, lastOrderDate, lastOrderPrice')
 
-  const newGroup = await models.Group.create({ name })
+  const newGroup = await models.Group.create({
+    createDate, groupName, isActive, lastOrderDate, lastOrderPrice
+  })
 
   return res.status(201).send(newGroup)
 }

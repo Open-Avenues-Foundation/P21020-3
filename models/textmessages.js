@@ -5,7 +5,7 @@ const TextMessage = (connection, Sequelize) => {
     messageBody: { type: Sequelize.STRING },
     expiryDate: { type: Sequelize.DATE },
     nextRemindDate: { type: Sequelize.STRING },
-    reminderFrequencyID: { type: Sequelize.INTEGER },
+    reminderFrequencyId: { type: Sequelize.INTEGER },
     messageStatus: { type: Sequelize.ENUM('Delivered', 'Failed') }
   },
   { paranoid: true })

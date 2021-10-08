@@ -5,7 +5,7 @@ const { getAllGroups, getGroupById, createNewGroup } = require('../controllers/g
 const groupRoutes = (app) => {
   app.get('/groups', getAllGroups)
   app.get('/group/:id', getGroupById)
-  app.post('/newgroup', createNewGroup)
+  app.post('/newGroup', createNewGroup)
 }
 
 module.exports = groupRoutes

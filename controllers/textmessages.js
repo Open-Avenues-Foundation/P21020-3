@@ -18,11 +18,16 @@ const getMessageById = async (req, res) => {
 }
 
 const createNewMessage = async (req, res) => {
-  const { subject, messageBody } = res.body
+  const {
+    subject, messageBody, expiryDate, nextRemindDate, reminderFrequencyId, messageStatus
+  } = res.body
 
-  if (!subject || !messageBody) return res.status(400).send('The following fields are required: subject, message body')
+  // eslint-disable-next-line max-len
+  if (!subject || !messageBody || !expiryDate || !nextRemindDate || !reminderFrequencyId || !messageStatus) return res.status(400).send('The following fields are required: subject, message body')
 
-  const newMessage = await models.TextMessage.create({ subject, messageBody })
+  const newMessage = await models.TextMessage.create({
+    subject, messageBody, expiryDate, nextRemindDate, reminderFrequencyId, messageStatus
+  })
 
   return res.status(201).send(newMessage)
 }
