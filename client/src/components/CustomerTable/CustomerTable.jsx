@@ -1,5 +1,6 @@
 import React from "react"
 import { Spinner, Table } from 'react-bootstrap'
+import CustomerRow from '../CustomerRow'
 
 const CustomerTable = props => {
   const {customers, isLoading} = props
@@ -14,29 +15,25 @@ const CustomerTable = props => {
         </tr>
       )
     }
+
     if (customers.length === 0) {
     return (
       <tr>
-        <td colspan="8">
+        <td colspan="9">
           There is nothing to display, please add some customers
         </td>
       </tr>
     )
-  } else {
-      return customers.map((customer, index) => {
-        <tr>
-          <td>{customer.id}</td>
-          <td>{customer.firstName}</td>
-          <td>{customer.lastName}</td>
-          <td>{customer.email}</td>
-          <td>{customer.phoneNumber}</td>
-          <td>{customer.city}</td>
-          <td>{customer.state}</td>
-          <td>Delete</td>
-        </tr>
-      })
   }
-}
+    return (
+      <>
+      {customers.map(customer => {
+        return (<CustomerRow customer={customer}/>)
+      })} 
+      </>
+    )
+  }
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -48,7 +45,8 @@ const CustomerTable = props => {
           <th>Phone Number</th>
           <th>City</th>
           <th>State</th>
-          <th>Action</th>
+          <th>Last Order Date</th>
+          <th>Last Order Price</th>
         </tr>
       </thead>
       <tbody>

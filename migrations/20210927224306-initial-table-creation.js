@@ -12,7 +12,7 @@ module.exports = {
       city: { type: Sequelize.STRING },
       state: { type: Sequelize.STRING },
       lastOrderPrice: { type: Sequelize.DECIMAL },
-      lastOrderDate: { type: Sequelize.DATE },
+      lastOrderDate: { type: Sequelize.DATEONLY },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP') },
       deletedAt: { type: Sequelize.DATE }
