@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import InputNewCustomer from './InputNewCustomer'
 import CustomerTable from './CustomerTable/CustomerTable'
+import CSVUpload from './CSVUpload'
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [allCustomers, setAllCustomers] = useState([])
   const [errorMessage, setErrorMessage] = useState()
   const [userAdded, setUserAdded] = useState(false)
+  
 
   useEffect(() => {
     axios
@@ -40,6 +42,7 @@ const Dashboard = () => {
 
   return (
     <>
+    <CSVUpload setUserAdded = {setUserAdded}/>
     <InputNewCustomer setUserAdded = {setUserAdded}/>
     <CustomerTable customers={allCustomers} isLoading={isLoading} />
     </>
