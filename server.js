@@ -12,6 +12,8 @@ app.use(cors())
 app.use(express.static('client/build'))
 
 app.use(express.json())
+app.use(express.urlencoded({extended:false}));
+
 
 customerRoutes(app)
 textmessageRoutes(app)

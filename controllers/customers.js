@@ -1,5 +1,5 @@
 const models = require('../models')
-
+const csv = require('csvtojson')
 
 const sanitizeEmail = (email) => {
   const invalidChars = /[,]+|[.]{2,}|\s/g
@@ -9,7 +9,19 @@ const sanitizeEmail = (email) => {
 }
 
 const handleUploadCustomers = async (req, res) => {
-  const customers = req.body
+  let csvData = await csv().fromFile(req.file.path)
+  let customers = csvData.map(customer => {
+    return {
+      firstName: customer['First Name'],
+      lastName: customer['Last Name'],
+      email: customer['Email'],
+      phoneNumber: customer['Phone number'],
+      city: customer['City'],
+      state: customer['State'],
+      lastOrderDate: customer['Last Order Date'],
+      lastOrderPrice: customer['Last Order Price']
+    }
+  })
 
   const customerEmailValidate = customers.map((customer) => {
     const { email } = customer
@@ -65,6 +77,7 @@ const createNewCustomer = async (req, res) => {
   })
 
   return res.status(201).send(newCustomer)
+
 }
 
 
