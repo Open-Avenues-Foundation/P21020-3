@@ -3,6 +3,7 @@ import axios from 'axios'
 import InputNewCustomer from './InputNewCustomer'
 import CustomerTable from './CustomerTable/CustomerTable'
 import CSVUpload from './CSVUpload'
+import Search from './SearchFilter'
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -43,6 +44,7 @@ const Dashboard = () => {
   return (
     <>
     <CSVUpload setUserAdded = {setUserAdded}/>
+    <Search />
     <InputNewCustomer setUserAdded = {setUserAdded}/>
     <CustomerTable customers={allCustomers} isLoading={isLoading} />
     </>
