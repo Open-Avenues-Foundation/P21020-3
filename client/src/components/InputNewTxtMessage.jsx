@@ -22,20 +22,21 @@ const addNewMessage = async (event) => {
     }
 }
 
-
 return (
         <div className="customerinput">
             <form action="">
                 <label htmlFor="to">Recipient:</label>
-                    <input type="text" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({to: event.target.value})} required />
-                <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" name="lastName" id="lname" value={newUser.lastName} onChange={(event) => setNewUser({...newUser, lastName: event.target.value})} required />  
-                <label htmlFor="email">Email Address:</label>
-                    <input type="text" name="email" id="email" value={newUser.email} onChange={(event) => setNewUser({...newUser, email: event.target.value})} required /> 
-                <button variant="primary" size="lg" className="addcustomer" onClick={(event) => addNewUser(event)}>Create New Customer</button>
+                    <input type="tel" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({to: event.target.value})} required />
+                <label htmlFor="body">Body:</label>
+                    <input type="text" name="body" id="body" value={newMessage.body} onChange={(event) => setNewMessage({body: event.target.value})} required />
+                
+                <button variant="primary" size="lg" className="sendmessage" onClick={(event) => addNewMessage(event)}>Send New Text</button>
             </form>
         </div>
     )  
   }
+
+export default NewMsg
+
 
 
