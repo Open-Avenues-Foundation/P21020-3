@@ -13,9 +13,11 @@ id INT AUTO_INCREMENT,
 firstName VARCHAR(255),
 lastName VARCHAR(255),
 email VARCHAR(255),
-phoneNumber VARCHAR(10),
+phoneNumber VARCHAR(20),
 state VARCHAR(2),
 city VARCHAR(50),
+lastOrderPrice VARCHAR(50),
+lastOrderDate DATE,
 updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
 createdAt DATETIME DEFAULT NOW(),
 deletedAt DATETIME,
@@ -37,30 +39,5 @@ CREATE TABLE textMessages (
   deletedAt DATETIME,
   FOREIGN KEY(customerId) REFERENCES customers(Id),
   PRIMARY KEY (id)
-);
-
-CREATE TABLE textGroups (
-  id INT AUTO_INCREMENT,
-  groupName  VARCHAR(255),
-  createDate DATETIME,
-  isActive ENUM('Y', 'N'),
-  lastOrderDate DATETIME,
-  lastOrderPrice INT,
-  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
-  createdAt DATETIME DEFAULT NOW(),
-  deletedAt DATETIME,
-  PRIMARY KEY(id)
-);
-
-
-CREATE TABLE customerGroups (
-  customerId INT,
-  textGroupId INT,
-  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
-  createdAt DATETIME DEFAULT NOW(),
-  deletedAt DATETIME,
-  FOREIGN KEY(customerId) REFERENCES customers(Id),
-  FOREIGN KEY(textGroupId) REFERENCES textGroups(Id),
-  PRIMARY KEY(customerId, textGroupId)
 );
 

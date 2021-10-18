@@ -17,7 +17,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 // app.use(express.urlencoded({ extended: false }))
 
-
 customerRoutes(app)
 textmessageRoutes(app)
 

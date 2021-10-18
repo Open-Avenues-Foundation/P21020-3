@@ -1,8 +1,6 @@
 import axios from "axios"
-import React, { useState, useEffect } from "react"
-import {Table} from 'react-bootstrap'
-import { Button } from 'react-bootstrap'
-import { Form } from 'react-bootstrap'
+import React, { useState } from "react"
+
 
 const NewCustomer = (props) => {
     const {setUserAdded} = props
