@@ -39,7 +39,7 @@ const getMessageById = async (req, res) => {
 
 const createNewMessage = async (req, res) => {
   res.header('Content-Type', 'application/json')
-
+console.log("yes")
   client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
