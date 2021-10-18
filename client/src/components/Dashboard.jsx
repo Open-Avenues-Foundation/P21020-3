@@ -4,12 +4,18 @@ import InputNewCustomer from './InputNewCustomer'
 import CustomerTable from './CustomerTable/CustomerTable'
 import CSVUpload from './CSVUpload'
 import Search from './SearchFilter'
+import InputNewTxtMessage from './InputNewTxtMessage'
+import TextTable from './TextTable/TextTable'
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [allCustomers, setAllCustomers] = useState([])
+  const [filterCustomers, setFilterCustomers] = useState([])
   const [errorMessage, setErrorMessage] = useState()
   const [userAdded, setUserAdded] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [searchParam, setSearchParam] = useState('id')
+  const [allTexts, setAllTexts] = useState([])
   
 
   useEffect(() => {
@@ -18,6 +24,7 @@ const Dashboard = () => {
       setIsLoading(false)
       const customers = response.data
       setAllCustomers(customers)
+      setFilterCustomers(customers)
     })
     .catch(error => {
       setIsLoading(false)
@@ -41,12 +48,24 @@ const Dashboard = () => {
     })
   }, [userAdded])
 
+  useEffect(() => {
+    setFilterCustomers(allCustomers.filter((customer => {
+      return customer[searchParam].toString().toLowerCase().includes(searchTerm.toLowerCase())
+    })))
+
+  }, [searchTerm, searchParam, allCustomers])
+
   return (
     <>
-    <CSVUpload setUserAdded = {setUserAdded}/>
-    <Search />
+    <CSVUpload setUserAdded={setUserAdded}/>
+    <Search searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm} 
+      searchParam={searchParam}
+      setSearchParam={setSearchParam} />
     <InputNewCustomer setUserAdded = {setUserAdded}/>
-    <CustomerTable customers={allCustomers} isLoading={isLoading} />
+    <CustomerTable customers={filterCustomers} isLoading={isLoading} />
+    <InputNewTxtMessage />
+    <TextTable texts={allTexts} isLoading={isLoading} />
     </>
   )
 }
