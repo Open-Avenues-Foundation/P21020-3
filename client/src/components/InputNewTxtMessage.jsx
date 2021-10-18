@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import axios from 'axios';
+import axios from 'axios'
 
 
 const NewMsg = (props) => {
@@ -28,14 +28,15 @@ return (
             <form action="">
                 <label htmlFor="to">Recipient:</label>
                     <input type="text" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({to: event.target.value})} required />
-                <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" name="lastName" id="lname" value={newUser.lastName} onChange={(event) => setNewUser({...newUser, lastName: event.target.value})} required />  
-                <label htmlFor="email">Email Address:</label>
-                    <input type="text" name="email" id="email" value={newUser.email} onChange={(event) => setNewUser({...newUser, email: event.target.value})} required /> 
-                <button variant="primary" size="lg" className="addcustomer" onClick={(event) => addNewUser(event)}>Create New Customer</button>
+                <label htmlFor="from">From:</label>
+                    <input type="text" name="from" id="from" value={newMessage.from} onChange={(event) => setNewMessage({...newMessage, from: event.target.value})} required />  
+                <label htmlFor="body">Body:</label>
+                    <input type="text" name="body" id="body" value={newMessage.body} onChange={(event) => setNewMessage({...newMessage, body: event.target.value})} required /> 
+                <button variant="primary" size="lg" className="addmessage" onClick={(event) => addNewMessage(event)}>Create New Message</button>
             </form>
         </div>
     )  
   }
 
+  export default NewMsg
 

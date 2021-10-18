@@ -45,7 +45,7 @@ const TextTable = props => {
         </tr>
       </thead>
       <tbody>
-        {/* {displayTexts()} */}
+        {displayTextMessage}
       </tbody>
     </Table>
       )
