@@ -23,10 +23,10 @@ const addNewMessage = async (event) => {
 }
 
 return (
-        <div className="customerinput">
+        <div className="textinput">
             <form action="">
                 <label htmlFor="to">Recipient:</label>
-                    <input type="tel" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({to: event.target.value})} required />
+                    <input type="text" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({to: event.target.value})} required />
                 <label htmlFor="body">Body:</label>
                     <input type="text" name="body" id="body" value={newMessage.body} onChange={(event) => setNewMessage({body: event.target.value})} required />
                 

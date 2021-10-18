@@ -2,7 +2,7 @@ const models = require('../models')
 const csv = require('csvtojson')
 
 const sanitizeEmail = (email) => {
-  const invalidChars = /[,]+|[.]{2,}|\s/g
+  const invalidChars = /[,]+|[.]{2,}|[~]+|\s/g
   const validatedEmail = email.replace(invalidChars, '')
 
   return validatedEmail
