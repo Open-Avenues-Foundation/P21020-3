@@ -1,5 +1,10 @@
+require('dotenv').config()
 const models = require('../models')
 
+const client = require('twilio')(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+)
 
 const getAllMessages = async (req, res) => {
   const messages = await models.TextMessage.findAll()
@@ -17,19 +22,37 @@ const getMessageById = async (req, res) => {
     : res.sendStatus(404)
 }
 
+// const createNewMessage = async (req, res) => {
+//   const {
+//     messageBody, messageStatus
+//   } = req.body
+
+//   // eslint-disable-next-line max-len
+//   if (!messageBody || !messageStatus) return res.status(400).send('The following fields are required: messageBody, messageStatus')
+
+//   const newMessage = await models.TextMessage.create({
+//     messageBody, messageStatus
+//   })
+
+//   return res.status(201).send(newMessage)
+// }
+
 const createNewMessage = async (req, res) => {
-  const {
-    messageBody, messageStatus
-  } = req.body
-
-  // eslint-disable-next-line max-len
-  if (!messageBody || !messageStatus) return res.status(400).send('The following fields are required: messageBody, messageStatus')
-
-  const newMessage = await models.TextMessage.create({
-    messageBody, messageStatus
-  })
-
-  return res.status(201).send(newMessage)
+  res.header('Content-Type', 'application/json')
+console.log("yes")
+  client.messages
+    .create({
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: req.body.to,
+      body: req.body.body
+    })
+    .then(() => {
+      res.send(JSON.stringify({ success: true }))
+    })
+    .catch(err => {
+      console.log(err)
+      res.send(JSON.stringify({ success: false }))
+    })
 }
 
 module.exports = { getAllMessages, getMessageById, createNewMessage }
