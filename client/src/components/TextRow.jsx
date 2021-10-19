@@ -6,9 +6,9 @@ const TextRow = (props) => {
   return (
     <tr>
       <td>{text.id}</td>
-      <td>{text.to}</td>
-      <td>{text.from}</td>
-      <td>{text.body}</td>
+      <td>{text.messageRecipient}</td>
+      <td>{text.messageBody}</td>
+      <td>{text.messageStatus}</td>
     </tr>
   )
 }

@@ -56,6 +56,7 @@ const Dashboard = () => {
       setIsLoading(false)
       setMessageAdded(false)
       const messages = response.data
+      console.log(messages)
       setAllTexts(messages)
     })
     .catch(error => {
