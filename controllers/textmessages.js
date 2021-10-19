@@ -1,5 +1,6 @@
 require('dotenv').config()
 const models = require('../models')
+const TextMessage = require('../models/textmessages')
 
 const client = require('twilio')(
   process.env.TWILIO_ACCOUNT_SID,
@@ -36,10 +37,16 @@ const getMessageById = async (req, res) => {
 
 //   return res.status(201).send(newMessage)
 // }
+const saveNewMessage = async (number, messagebody) => {
+  return await TextMessage.create({
+    messageRecipient: number,
+    messageBody: messagebody,
+    messageStatus: 'Undelivered',
+  })
+}
 
 const createNewMessage = async (req, res) => {
   res.header('Content-Type', 'application/json')
-console.log("yes")
   client.messages
     .create({
       from: process.env.TWILIO_PHONE_NUMBER,
@@ -55,4 +62,4 @@ console.log("yes")
     })
 }
 
-module.exports = { getAllMessages, getMessageById, createNewMessage }
+module.exports = { getAllMessages, getMessageById, createNewMessage, saveNewMessage }

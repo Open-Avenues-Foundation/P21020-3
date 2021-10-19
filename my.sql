@@ -26,18 +26,20 @@ PRIMARY KEY (id)
 
 CREATE TABLE textMessages (
   id INT AUTO_INCREMENT,
-  customerid INT, 
-  subject VARCHAR(255),
+  messageRecipient VARCHAR(255),
+  messageSender VARCHAR(255),
   messageBody VARCHAR(255),
-  createDate DATETIME,
-  expiryDate DATETIME,
-  nextRemindDate DATETIME,
-  reminderFrequencyID INT,
-  isRead ENUM('Y', 'N'),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   createdAt DATETIME DEFAULT NOW(),
   deletedAt DATETIME,
-  FOREIGN KEY(customerId) REFERENCES customers(Id),
   PRIMARY KEY (id)
 );
+
+CREATE TABLE customerTexts (
+  customerId INT,
+  textMessageId INT,
+  PRIMARY KEY (customerId, textMessageId),
+  FOREIGN KEY (customerId) references customers(id),
+  FOREIGN KEY (textMessageId) references textMessages(id)
+)
 
