@@ -21,8 +21,9 @@ module.exports = {
     await
     queryInterface.createTable('textmessages', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+      messageRecipient: { type: Sequelize.STRING },
       messageBody: { type: Sequelize.STRING },
-      messageStatus: { type: Sequelize.ENUM('Delivered', 'Failed') },
+      messageStatus: { type: Sequelize.STRING },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP') },
       deletedAt: { type: Sequelize.DATE }

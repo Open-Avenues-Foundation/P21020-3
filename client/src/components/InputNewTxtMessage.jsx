@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 
@@ -13,6 +13,7 @@ const NewMsg = (props) => {
 
 const addNewMessage = async (event) => {
     event.preventDefault()
+    console.log(newMessage)
     try {
         const response = await axios.post('http://localhost:7000/newmessage', newMessage)
        setMessageAdded(true)
@@ -23,12 +24,12 @@ const addNewMessage = async (event) => {
 }
 
 return (
-        <div className="customerinput">
+        <div className="textinput">
             <form action="">
                 <label htmlFor="to">Recipient:</label>
-                    <input type="tel" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({to: event.target.value})} required />
-                <label htmlFor="body">Body:</label>
-                    <input type="text" name="body" id="body" value={newMessage.body} onChange={(event) => setNewMessage({body: event.target.value})} required />
+                    <input type="tel" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({...newMessage, to: event.target.value})} required />
+                <label htmlFor="body">body:</label>
+                    <input type="text" name="body" id="body" value={newMessage.body} onChange={(event) => setNewMessage({...newMessage, body: event.target.value})} required />
                 
                 <button variant="primary" size="lg" className="sendmessage" onClick={(event) => addNewMessage(event)}>Send New Text</button>
             </form>

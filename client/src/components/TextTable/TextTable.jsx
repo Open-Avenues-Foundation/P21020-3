@@ -39,13 +39,13 @@ const TextTable = props => {
       <thead>
         <tr>
           <th>Id</th>
-          <th>Text To</th>
-          <th>Text From</th>
-          <th>Text Body</th>
+          <th>Recipient</th>
+          <th>Body</th>
+          <th>Message Status</th>
         </tr>
       </thead>
       <tbody>
-        {displayTextMessage}
+        {displayTextMessage()}
       </tbody>
     </Table>
       )

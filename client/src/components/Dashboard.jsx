@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchParam, setSearchParam] = useState('id')
   const [allTexts, setAllTexts] = useState([])
+  const [messageAdded, setMessageAdded] = useState([])
   
 
   useEffect(() => {
@@ -49,6 +50,23 @@ const Dashboard = () => {
   }, [userAdded])
 
   useEffect(() => {
+    setIsLoading(true)
+    axios
+    .get('http://localhost:7000/messages').then(response => {
+      setIsLoading(false)
+      setMessageAdded(false)
+      const messages = response.data
+      console.log(messages)
+      setAllTexts(messages)
+    })
+    .catch(error => {
+      setIsLoading(false)
+      setMessageAdded(false)
+      setErrorMessage(error.message)
+    })
+  }, [messageAdded])
+
+  useEffect(() => {
     setFilterCustomers(allCustomers.filter((customer => {
       return customer[searchParam].toString().toLowerCase().includes(searchTerm.toLowerCase())
     })))
@@ -64,7 +82,7 @@ const Dashboard = () => {
       setSearchParam={setSearchParam} />
     <InputNewCustomer setUserAdded = {setUserAdded}/>
     <CustomerTable customers={filterCustomers} isLoading={isLoading} />
-    <InputNewTxtMessage />
+    <InputNewTxtMessage setMessageAdded={setMessageAdded}/>
     <TextTable texts={allTexts} isLoading={isLoading} />
     </>
   )
