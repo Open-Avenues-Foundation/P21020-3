@@ -31,6 +31,10 @@ body {
 .search-box {
   background-color: #11168A;
   color: white;
+  font-size: 1.2em;
+  padding: 5px;
+  margin:10px;
+  border-radius: 10px;
 }
 
 .customerinput {
@@ -40,6 +44,7 @@ body {
   width: 30%;
   margin: 30px;
   border-radius: 10px;
+  padding: 10px;
 }
 
 .customerinput h3 {
@@ -54,6 +59,7 @@ body {
   width: 30%;
   margin: 30px;
   border-radius: 10px;
+  padding: 10px;
 }
 
 .textinput h3 {
