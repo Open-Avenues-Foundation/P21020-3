@@ -31,19 +31,24 @@ body {
 .search-box {
   background-color: #11168A;
   color: white;
+  font-size: 1.2em;
+  padding: 5px;
+  width: 30%;
+  margin: auto;
 }
 
 .customerinput {
   background-color: rgba(93, 127, 174, .5);
   float: right;
+  justify-content: space-between;
   width: 30%;
   margin: 30px;
   border-radius: 10px;
+  padding: 10px;
 }
 
 .customerinput h3 {
   color: #11168A;
-  justify-content: center;
   align-items: center;
 }
 
@@ -85,4 +90,10 @@ form {
 #body {
 height: 100px;
 padding: 0px;
+}
+
+
+.textinput h3 {
+  color: #11168A;
+  align-items: center;
 }

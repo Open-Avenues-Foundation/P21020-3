@@ -25,6 +25,7 @@ const addNewMessage = async (event) => {
 
 return (
         <div class="textinput" className="textinput">
+
             <h3>Send a Text!</h3>
             <form action="">
                 <label htmlFor="to">Recipient:</label>
