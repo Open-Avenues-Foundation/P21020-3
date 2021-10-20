@@ -1,6 +1,7 @@
 import React from "react"
 import { Spinner, Table } from 'react-bootstrap'
 import CustomerRow from '../CustomerRow'
+import './CustomerTable.css'
 
 const CustomerTable = props => {
   const {customers, isLoading} = props
@@ -35,6 +36,7 @@ const CustomerTable = props => {
   }
 
   return (
+    <div class="customer-table">
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -53,6 +55,7 @@ const CustomerTable = props => {
         {displayCustomers()}
       </tbody>
     </Table>
+    </div>
       )
 }
 

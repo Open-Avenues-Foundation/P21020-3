@@ -1,0 +1,21 @@
+.customer-table {
+  display: block;
+  overflow: auto;
+  height: 400px;
+  width: 50%;
+  border: 10px solid rgba(93, 127, 174, .5);
+  border-radius: 10px;
+  margin: 30px;
+}
+
+.customer-table thead {
+  background-color: #11168A;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.customer-table tbody {
+  background-color: aliceblue;
+}
+
