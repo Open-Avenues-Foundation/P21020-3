@@ -54,13 +54,44 @@ body {
 
 .textinput {
   background-color: rgba(93, 127, 174, .5);
-  float: right;
-  justify-content: space-between;
   width: 30%;
-  margin: 30px;
   border-radius: 10px;
-  padding: 10px;
+  margin-left:1000px;
 }
+h3 {
+  color: #11168A;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+label {
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  width: 130px;
+  float: left;
+  margin-left: 40px;
+}
+
+button {
+  margin-bottom: 20px;
+}
+
+input {
+  margin-bottom: 15px;
+  
+}
+
+form {
+  align-items: center;
+}
+
+#body {
+height: 100px;
+padding: 0px;
+}
+
 
 .textinput h3 {
   color: #11168A;

@@ -63,7 +63,7 @@ const createNewMessage = async (req, res) => {
         })
         .then(async () => {
           console.log(dataValues)
-         await models.TextMessage.update({ messageStatus: 'successful' }, { where: { id } })
+          await models.TextMessage.update({ messageStatus: 'successful' }, { where: { id } })
           res.send(JSON.stringify({ success: true }))
         })
         .catch(err => {

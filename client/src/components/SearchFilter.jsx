@@ -20,6 +20,7 @@ const Search = (props) => {
                 <option value="state">State</option>
             </select>
             <input type="text" className="searchbar" name="searchbar" value={searchTerm} onChange={event => setSearchTerm(event.target.value)} />
+
         </div>
         </div>
     )
