@@ -1,5 +1,6 @@
 import axios from "axios"
 import React, { useState } from "react"
+import './overall.css'
 
 
 const NewCustomer = (props) => {
@@ -29,6 +30,7 @@ const addNewUser = async (event) => {
 
     return (
         <div className="customerinput">
+            <h3>Input a New Customer</h3>
             <form action="">
                 <label htmlFor="firstName">First Name:</label>
                     <input type="text" name="firstName" id="fname" value={newUser.firstName} onChange={(event) => setNewUser({...newUser, firstName: event.target.value})} required />

@@ -6,6 +6,7 @@ import CSVUpload from './CSVUpload'
 import Search from './SearchFilter'
 import InputNewTxtMessage from './InputNewTxtMessage'
 import TextTable from './TextTable/TextTable'
+import Header from './Header'
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -75,6 +76,7 @@ const Dashboard = () => {
 
   return (
     <>
+    <Header />
     <CSVUpload setUserAdded={setUserAdded}/>
     <Search searchTerm={searchTerm}
       setSearchTerm={setSearchTerm} 

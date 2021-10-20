@@ -1,6 +1,7 @@
 import React from "react"
 import { Spinner, Table } from 'react-bootstrap'
 import TextRow from '../TextRow'
+import './TextTable.css'
 
 const TextTable = props => {
   const {texts, isLoading} = props
@@ -35,6 +36,7 @@ const TextTable = props => {
   }
 
   return (
+    <div class="text-table">
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -48,6 +50,7 @@ const TextTable = props => {
         {displayTextMessage()}
       </tbody>
     </Table>
+    </div>
       )
 }
 export default TextTable

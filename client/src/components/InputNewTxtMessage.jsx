@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import './overall.css'
 
 const NewMsg = (props) => {
     const {setMessageAdded} = props
@@ -24,7 +24,8 @@ const addNewMessage = async (event) => {
 }
 
 return (
-        <div className="textinput">
+        <div class='textinput' className="textinput">
+            <h3>Send a Text!</h3>
             <form action="">
                 <label htmlFor="to">Recipient:</label>
                     <input type="tel" name="to" id="to" value={newMessage.to} onChange={(event) => setNewMessage({...newMessage, to: event.target.value})} required />

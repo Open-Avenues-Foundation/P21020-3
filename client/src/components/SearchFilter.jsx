@@ -1,9 +1,11 @@
 import React from 'react'
+import './overall.css'
 
 
 const Search = (props) => {
     let {setSearchTerm, searchTerm, searchParam, setSearchParam} = props
      return(
+         <div class="search-box">
         <div className="container">
             <p>Search for Customer By:</p>
             <select name="customeridentifier" id="customeridentifier" value={searchParam} onChange={event => {
@@ -18,7 +20,7 @@ const Search = (props) => {
                 <option value="state">State</option>
             </select>
             <input type="text" className="searchbar" name="searchbar" value={searchTerm} onChange={event => setSearchTerm(event.target.value)} />
-         
+        </div>
         </div>
     )
 }

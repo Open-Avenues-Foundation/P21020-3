@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
+import './overall.css'
 
 const CSVUpload = (props) => {
     const [upload, setUpload] = useState(null)
@@ -28,11 +29,13 @@ const CSVUpload = (props) => {
     
     return(
         <>
+        <div class='csv'>
         <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>Upload CSV</Form.Label>
             <Form.Control type="file" onChange={event => setUpload(event.target.files[0])} />
             <Button variant="primary" onClick={submitForm}>Upload</Button>{' '}
         </Form.Group>
+        </div>
         </>)
 
 }
