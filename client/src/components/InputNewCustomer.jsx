@@ -48,7 +48,7 @@ const addNewUser = async (event) => {
                     <input type="text" name="lastOrderDate" id="lastOrderDate" value={newUser.lastOrderDate} onChange={(event) => setNewUser({...newUser, lastOrderDate: event.target.value})} required /><br /> 
                 <label htmlFor="lastOrderPrice">Last Order Price:</label>
                     <input type="text" name="lastOrderPrice" id="lastOrderPrice" value={newUser.lastOrderPrice} onChange={(event) => setNewUser({...newUser, lastOrderPrice: event.target.value})} required /><br /> 
-                <button variant="primary" size="lg" className="addcustomer" onClick={(event) => addNewUser(event)}>Create New Customer</button> <input type="reset" value="reset" />
+                <button variant="primary" size="lg" className="addcustomer" onClick={(event) => addNewUser(event)}>Create New Customer</button>
             </form>
         </div>
     )  

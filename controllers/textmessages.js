@@ -22,28 +22,6 @@ const getMessageById = async (req, res) => {
     : res.sendStatus(404)
 }
 
-// const createNewMessage = async (req, res) => {
-//   const {
-//     messageBody, messageStatus
-//   } = req.body
-
-//   // eslint-disable-next-line max-len
-//   if (!messageBody || !messageStatus) return res.status(400).send('The following fields are required: messageBody, messageStatus')
-
-//   const newMessage = await models.TextMessage.create({
-//     messageBody, messageStatus
-//   })
-
-//   return res.status(201).send(newMessage)
-// }
-// const saveNewMessage = async (number, messagebody) => {
-//   return await TextMessage.create({
-//     messageRecipient: number,
-//     messageBody: messagebody,
-//     messageStatus: 'Undelivered',
-//   })
-// }
-
 const createNewMessage = async (req, res) => {
   const { to, body } = req.body
 
